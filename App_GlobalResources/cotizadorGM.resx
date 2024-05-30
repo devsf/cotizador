@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Aceptar" xml:space="preserve">
+    <value>Aceptar</value>
+  </data>
+  <data name="AdicionarDepend" xml:space="preserve">
+    <value>Desea adicionar dependientes</value>
+  </data>
+  <data name="Agente" xml:space="preserve">
+    <value>Agente de seguros</value>
+  </data>
+  <data name="AlcanceTerritorial" xml:space="preserve">
+    <value>Alcance territorial</value>
+  </data>
+  <data name="Apellido1" xml:space="preserve">
+    <value>Primer apellido</value>
+    <comment>2</comment>
+  </data>
+  <data name="Apellido2" xml:space="preserve">
+    <value>Segundo apellido</value>
+    <comment>3</comment>
+  </data>
+  <data name="btnCancelar" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="btnContinuar" xml:space="preserve">
+    <value>Continuar</value>
+  </data>
+  <data name="btnImprimir" xml:space="preserve">
+    <value>Imprimir oferta</value>
+  </data>
+  <data name="CampoObligario" xml:space="preserve">
+    <value>Campo obligatorio</value>
+  </data>
+  <data name="CartaOferta" xml:space="preserve">
+    <value>Imprimir Carta Oferta</value>
+  </data>
+  <data name="Ciudad" xml:space="preserve">
+    <value>Ciudad/Municipio</value>
+  </data>
+  <data name="Coaseguro" xml:space="preserve">
+    <value>Coaseguro de gastos médicos</value>
+  </data>
+  <data name="CodigoPostal" xml:space="preserve">
+    <value>Código postal</value>
+  </data>
+  <data name="Colonia" xml:space="preserve">
+    <value>Colonia</value>
+  </data>
+  <data name="Correo" xml:space="preserve">
+    <value>Correo electrónico</value>
+  </data>
+  <data name="Deducible" xml:space="preserve">
+    <value>Deducible de gastos médicos</value>
+  </data>
+  <data name="Depto" xml:space="preserve">
+    <value>Estado/Departamento</value>
+  </data>
+  <data name="DescripPlanDental" xml:space="preserve">
+    <value>Aplica únicamente para gastos realizados en El Salvador.</value>
+  </data>
+  <data name="DeseaPlanDental" xml:space="preserve">
+    <value>Desea plan dental</value>
+  </data>
+  <data name="Direccion" xml:space="preserve">
+    <value>Dirección</value>
+  </data>
+  <data name="Entidad" xml:space="preserve">
+    <value>Entidad</value>
+  </data>
+  <data name="EstadoFam" xml:space="preserve">
+    <value>Estado familiar</value>
+  </data>
+  <data name="FechaNac" xml:space="preserve">
+    <value>Fecha de nacimiento</value>
+  </data>
+  <data name="FormaPago" xml:space="preserve">
+    <value>Forma de pago</value>
+  </data>
+  <data name="Genero" xml:space="preserve">
+    <value>Género</value>
+  </data>
+  <data name="Guardar" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="MaxVitalDental" xml:space="preserve">
+    <value>Máximo vitalicio dental</value>
+  </data>
+  <data name="MaxVitalGM" xml:space="preserve">
+    <value>Máximo vitalicio </value>
+  </data>
+  <data name="MedioPago" xml:space="preserve">
+    <value>Medio pago</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="NombreCompleto" xml:space="preserve">
+    <value>Nombre Completo</value>
+  </data>
+  <data name="Nombres" xml:space="preserve">
+    <value>Nombres</value>
+    <comment>1</comment>
+  </data>
+  <data name="NroDocumento" xml:space="preserve">
+    <value>Nro documento</value>
+  </data>
+  <data name="Nuevo" xml:space="preserve">
+    <value>Nuevo</value>
+  </data>
+  <data name="NumCasa" xml:space="preserve">
+    <value>Número Casa</value>
+  </data>
+  <data name="NumCuenta" xml:space="preserve">
+    <value>Número</value>
+  </data>
+  <data name="Observaciones" xml:space="preserve">
+    <value>Observaciones</value>
+  </data>
+  <data name="Ocupacion" xml:space="preserve">
+    <value>Ocupación</value>
+  </data>
+  <data name="Pais" xml:space="preserve">
+    <value>País</value>
+  </data>
+  <data name="PanelCoberturas" xml:space="preserve">
+    <value>Plan a contratar</value>
+  </data>
+  <data name="PanelDatosAgenteGen" xml:space="preserve">
+    <value>Datos del Agente</value>
+  </data>
+  <data name="PanelDatosGen" xml:space="preserve">
+    <value>Datos Generales del Asegurado Titular</value>
+  </data>
+  <data name="panelFormaPago" xml:space="preserve">
+    <value>Forma de Pago</value>
+  </data>
+  <data name="Parentesco" xml:space="preserve">
+    <value>Parentesco</value>
+  </data>
+  <data name="PjeAsignacion" xml:space="preserve">
+    <value>% de asignación</value>
+  </data>
+  <data name="SeleccionarUno" xml:space="preserve">
+    <value>Seleccione una opción...</value>
+  </data>
+  <data name="Si" xml:space="preserve">
+    <value>Sí</value>
+  </data>
+  <data name="SumaAsegurada" xml:space="preserve">
+    <value>Total suma asegurada</value>
+  </data>
+  <data name="TelCelular" xml:space="preserve">
+    <value>Teléfono celular</value>
+  </data>
+  <data name="Telefono" xml:space="preserve">
+    <value>Teléfono</value>
+  </data>
+  <data name="TipoDoc" xml:space="preserve">
+    <value>Tipo documento</value>
+  </data>
+  <data name="Titulo" xml:space="preserve">
+    <value>Oferta de Seguro Individual de Gastos Médicos</value>
+  </data>
+  <data name="TotalPagar" xml:space="preserve">
+    <value>Total prima a pagar</value>
+  </data>
+</root>

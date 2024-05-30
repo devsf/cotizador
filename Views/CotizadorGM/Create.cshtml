@@ -1,0 +1,385 @@
+﻿@model SF.Cotizador.Comunes.Cotizacion
+
+@{
+    ViewBag.Title = "Cotizacion GM";
+}
+
+@using (Html.BeginForm())
+{
+    @*<div class="row">
+        <div class="col-md-10"></div>
+        <div class="col-md-2" style="text-align:right">
+            @Html.ActionLink("Español", "Create", "CotizadorGM", new { area = "", lang = "es" }, null)
+            |
+            @Html.ActionLink("English", "Create", "CotizadorGM", new { area = "", lang = "en" }, null)
+        </div>
+    </div>*@
+    <div class="form-horizontal ">
+        <h4>@Resources.cotizadorGM.Titulo</h4>
+        <hr />
+        <div style="text-align:right"><span style="color:red"> * </span><span style="font-size:12px">@Resources.cotizadorGM.CampoObligario</span> </div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-success">
+                <div class="panel-heading" role="tab" id="panelHeadingDatos">
+                    <h3 class="panel-title">
+                        <a role="button" id="btnPanelDatos" data-toggle="collapse" href="#panelDatos" aria-expanded="true" aria-controls="panelDatos">
+                            <label>@Resources.cotizadorGM.PanelDatosGen</label>
+                        </a>
+                    </h3>
+                </div>
+                <div id="panelDatos" class="panel-collapse collapse in" data-parent="#accordion" role="tabpanel" aria-labelledby="panelHeadingDatos">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-md-2 col-sm-3"><label for="txtNombreAsegurado">@Resources.cotizadorGM.Nombres:</label><span style="color:red">  *</span> </div>
+                            <div class="col-md-4 col-sm-3">
+                                <input type="text" class="form-control" id="txtNombreAsegurado">
+                            </div>
+                            <div class="col-md-2 col-sm-3"><label for="txtApellido1Aseg">@Resources.cotizadorGM.Apellido1:</label><span style="color:red">  *</span> </div>
+                            <div class="col-md-4 col-sm-3">
+                                <input type="text" class="form-control" id="txtApellido1Aseg">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-2 col-sm-3"><label for="txtApellido2Aseg">@Resources.cotizadorGM.Apellido2:</label></div>
+                            <div class="col-md-4 col-sm-3">
+                                <input type="text" class="form-control" id="txtApellido2Aseg">
+                            </div>
+                            <div class="col-md-2 col-sm-3 "><label for="ddlGenero">@Resources.cotizadorGM.Genero:<span style="color:red">  *</span></label></div>
+                            <div class="col-md-4 col-sm-3">
+                                <select id="ddlGenero" class="selectpicker" data-live-search="true">
+                                    <option value="0">@Resources.cotizadorGM.SeleccionarUno</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-2 col-sm-3"><label for="txtFechaNac">@Resources.cotizadorGM.FechaNac:</label><span style="color:red">  *</span></div>
+                            <div class="col-md-3 col-sm-2 "><input type="text" id="txtFechaNac" class="form-control input-datepicker "></div>
+                            <div class="col-md-1 col-sm-1 " style="padding-left:0px; padding-right:0px "><label class="descripcionInput" id="lblEdad"></label></div>
+                            <div class="col-md-2 col-sm-3 "><label for="ddlEstadoFam">@Resources.cotizadorGM.EstadoFam:<span style="color:red">  *</span></label></div>
+                            <div class="col-md-4 col-sm-3 ">
+                                <select id="ddlEstadoFam" class="selectpicker" data-live-search="true">
+                                    <option value="0">@Resources.cotizadorGM.SeleccionarUno</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-2 col-sm-3 "><label for="txtTelefono">@Resources.cotizadorGM.Telefono:</label></div>
+                            <div class="col-md-4 col-sm-3 "><input type="text" id="txtTelefono" class="form-control" data-inputmask="phone"></div>
+                            <div class="col-md-2 col-sm-3 "><label for="txtTelefonoCelular">@Resources.cotizadorGM.TelCelular:</label></div>
+                            <div class="col-md-4 col-sm-3 "><input type="text" id="txtTelefonoCelular" class="form-control" data-inputmask="phone"></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-2 col-sm-3">
+                                <label for="txtEmail">@Resources.cotizadorGM.Correo:<span style="color:red">  *</span></label>
+                            </div>
+                            <div class="col-md-10 col-sm-9">
+                                <input type="text" class="form-control" id="txtEmail" placeholder="email@dominio.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-2 col-sm-3"><label for="ddlAgente">@Resources.cotizadorGM.Agente:</label></div>
+                            <div class="col-md-10 col-sm-9">
+                                <select id="ddlAgente" class="selectpicker" data-live-search="true">
+                                    <option value="0">@Resources.cotizadorGM.SeleccionarUno</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <label class="subtitulo">@Resources.cotizadorGM.Direccion</label>
+                        <hr class="subtitulo" />
+                        <div class="form-group">
+                            <div class="col-md-2 col-sm-3 "><label for="ddlDepto">@Resources.cotizadorGM.Depto:<span style="color:red">  *</span></label></div>
+                            <div class="col-md-10 col-sm-9 ">
+                                <select id="ddlDepto" class="selectpicker" data-live-search="true" disabled>
+                                    <option value="0">@Resources.cotizadorGM.SeleccionarUno</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-2 col-sm-3"><label for="ddlCiudad">@Resources.cotizadorGM.Ciudad:</label></div>
+                            <div class="col-md-4 col-sm-3 ">
+                                <select id="ddlCiudad" class="selectpicker" data-live-search="true" disabled>
+                                    <option value="0">@Resources.cotizadorGM.SeleccionarUno</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2 col-sm-3"><label for="ddlColonia">@Resources.cotizadorGM.Colonia:</label></div>
+                            <div class="col-md-4 col-sm-3">
+                                <select id="ddlColonia" class="selectpicker" data-live-search="true" disabled>
+                                    <option value="0">@Resources.cotizadorGM.SeleccionarUno</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-2 col-sm-3"><label for="txtAddress">@Resources.cotizadorGM.Direccion:</label></div>
+                            <div class="col-md-6 col-sm-5"><input type="text" id="txtAddress" class="form-control"></div>
+                            <div class="col-md-2 col-sm-2"><label for="txtNumCasa">@Resources.cotizadorGM.NumCasa:</label></div>
+                            <div class="col-md-2 col-sm-2 ">
+                                <input type="text" id="txtNumCasa" class="form-control">
+                            </div>
+                        </div>
+                       
+                        <div class="form-group">
+                            <div class="col-md-10 col-sm-6">
+                            </div>
+                            <div class="col-md-2 col-sm-6">
+                                <button id="btnContinuar1" data-collapse-from="panelDatos" data-collapse-open="panelCoberturas" class="btn btn-success btn-continue" style="width: 100%">@Resources.cotizadorGM.btnContinuar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-success">
+                <div class="panel-heading" role="tab" id="panelHeadingCoberturas">
+                    <h3 class="panel-title">
+                        <a role="button" id="btnPanelCoberturas" class="btn-panel btn-panel-bloqueo" data-toggle="collapse" href="#panelCoberturas" aria-expanded="true" aria-controls="panelCoberturas">
+                            <label> @Resources.cotizadorGM.PanelCoberturas</label>
+                        </a>
+                    </h3>
+                </div>
+                <div id="panelCoberturas" class="panel-collapse collapse " data-parent="#accordion" role="tabpanel" aria-labelledby="panelHeadingCoberturas">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-md-3 col-sm-3"><label for="ddlAlcanceTerritorial">@Resources.cotizadorGM.AlcanceTerritorial:</label><span style="color:red">  *</span></div>
+                            <div class="col-md-3 col-sm-3 ">
+                                <select id="ddlAlcanceTerritorial" class="selectpicker" data-live-search="true">
+                                    <option value="0">@Resources.cotizadorGM.SeleccionarUno</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 col-sm-3"><label for="ddlMaxVitalGM">@Resources.cotizadorGM.MaxVitalGM:</label><span style="color:red">  *</span></div>
+                            <div class="col-md-3 col-sm-3">
+                                <select id="ddlMaxVitalGM" class="selectpicker" data-live-search="true" disabled>
+                                    <option value="0">@Resources.cotizadorGM.SeleccionarUno</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3 col-sm-3"><label for="ddlFormaPago">@Resources.cotizadorGM.FormaPago:</label><span style="color:red">  *</span> </div>
+                            <div class="col-md-3 col-sm-3">
+                                <select id="ddlFormaPago" class="selectpicker" data-live-search="true">
+                                    <option value="0">@Resources.cotizadorGM.SeleccionarUno</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <label for="rbtPlanDental">@Resources.cotizadorGM.AdicionarDepend:</label><span style="color:red"> *</span>
+                            </div>
+                            <div class="col-md-2 col-sm-2 ">
+                                <label class="radio-inline">
+                                    <input type="radio" class="" name="rbtAdicionarDepen" id="rbtAdicionarDepenS" value="option1">@Resources.cotizadorGM.Si
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" class="" name="rbtAdicionarDepen" id="rbtAdicionarDepenN" value="option2" checked> @Resources.cotizadorGM.No
+                                </label>
+                            </div>
+                        </div>
+                        <label class="subtitulo">Información del plan de gastos médicos </label>
+                        <hr class="subtitulo" />
+                        <table class="table" id="tbl_plan">
+                            <tr>
+                                <td style="width: 18%">Deducible de gastos médicos:</td>
+                                <td style="width: 82%;"><ul id="lblDeducibleGM"></ul></td>
+                            </tr>
+                            <tr>
+                                <td>Coaseguro de gastos médicos:</td>
+                                <td><ul id="lblCoaseguroGM"></ul></td>
+                            </tr>
+                        
+                        </table>
+
+                        <div class="form-group">
+                            <div class="col-md-3 col-sm-3">
+                                <label for="rbtPlanDental">@Resources.cotizadorGM.DeseaPlanDental:</label><span style="color:red"> *</span>
+                                <span class="descripcion">@Resources.cotizadorGM.DescripPlanDental</span>
+                            </div>
+                            <div class="col-md-3 col-sm-3 ">
+                                <label class="radio-inline">
+                                    <input type="radio"  name="rbtPlanDental" id="rbtPlanDentalS" value="option1">@Resources.cotizadorGM.Si
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio"  name="rbtPlanDental" id="rbtPlanDentalN" value="option2" checked> @Resources.cotizadorGM.No
+                                </label>
+                            </div>
+                            <div class="col-md-3 col-sm-3 maxVitalDental"><label for="ddlMaxVitalDental">@Resources.cotizadorGM.MaxVitalDental:</label></div>
+                            <div class="col-md-3 col-sm-3 maxVitalDental">
+                                <select id="ddlMaxVitalDental" class="selectpicker" data-live-search="true" disabled>
+                                    <option value="0">@Resources.cotizadorGM.SeleccionarUno</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="pnlInfoPlanDental">
+                            <label class="subtitulo">Información del plan dental</label>
+                            <hr class="subtitulo" />
+                            <table class="table" id="tbl_plan">
+                                <tr>
+                                    <td style="width: 25%">Deducible del plan dental:</td>
+                                    <td style="width: 75%;"><ul id="lblDeducibleDental"></ul></td>
+                                </tr>
+                                <tr>
+                                    <td>Coaseguro del plan dental:</td>
+                                    <td><ul id="lblCoaseguroDental"></ul></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="form-group">
+                            
+                        </div>
+                        <div class="panel panel-info" id="pnlDependientes">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <label>Información de familiares dependientes</label>
+                                </h4>
+                            </div>
+                            <div id="panelDependientes" class="panel-collapse collapse in" role="tabpanel">
+                                <div class="panel-body">
+                                    @*<table id="jqGrid"></table>
+                                        <div id="jqGridPager"></div>*@
+
+                                    <table id="tblDependientes">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th><label>Nombres</label></th>
+                                                <th><label>Primer Apellido</label></th>
+                                                <th><label>Segundo Apellido</label></th>
+                                                <th><label>Parentesco</label></th>
+                                                <th><label>Fecha Nac.</label></th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            <tr>
+                                                <td style="width:0%"><input class="form-control" name="Id[]" type="hidden" /></td>
+                                                <td style="width:26%"><input class="form-control" name="NombresDependiente[]" type="text" placeholder="Nombres" /></td>
+                                                <td style="width:18%"><input class="form-control" name="Apellido1Dependiente[]" type="text" placeholder="1er apellido" /></td>
+                                                <td style="width:18%"><input class="form-control" name="Apellido2Dependiente[]" type="text" placeholder="2nd apellido" /></td>
+
+                                                <td style="width:24%">
+                                                    <select name="ParentescoDepend[]" id="ParentescoDepend1" class="selectpicker lstParentesco" data-live-search="true">
+                                                        <option value="0">@Resources.cotizadorGM.SeleccionarUno</option>
+                                                    </select>
+                                                </td>
+                                                <td style="width:42%"><input class="form-control input-datepicker-dependientes" name="FecNacDepend[]" type="text" placeholder="Fecha Nac." /></td>
+                                                <td style="width:4%">
+                                                    <button class="btn btn-danger btn-remove" type="button">
+                                                        <i class="glyphicon glyphicon-minus gs"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+
+                                    </table>
+                                    <div class="form-group">
+                                        <div class="col-md-9 col-sm-8">
+                                        </div>
+                                        <div class="col-md-3 col-sm-4">
+                                            <button class="btn btn-warning btn-add" type="button" style="width: 100%">
+                                                <i class="glyphicon glyphicon-plus gs"></i>
+                                                <b>Añadir dependiente</b>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer right">
+                       <button id="btnGuardar" data-collapse-open="panelPago" data-collapse-from="panelCoberturas" class="btn btn-success btn-continue" style="width: 30%;">Generar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-success">
+                <div class="panel-heading" role="tab" id="panelHeadingPago">
+                    <h3 class="panel-title">
+                        <a role="button" id="btnPanelPagos" class="btn-panel" data-toggle="collapse" href="#panelPago" aria-expanded="true" aria-controls="panelPago">
+                            <label> @Resources.cotizadorGM.panelFormaPago</label>
+                        </a>
+                    </h3>
+                </div>
+                <div id="panelPago" class="panel-collapse collapse" data-parent="#accordion" role="tabpanel" aria-labelledby="panelHeadingPago">
+                    <div class="panel-body">
+                        <hr />
+                        <table id="tblDependientesResultado" class="tablaPagoGM">
+                            <thead>
+                                <tr>
+                                    <th><label>Nombres completos</label></th>
+                                    <th><label>Parentesco</label></th>
+                                    <th><label>Prima anual Gastos Médicos</label></th>
+                                    <th><label>Prima anual Plan Dental</label></th>
+                                    <th><label>Prima total</label></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+
+                        </table>
+                        <hr />
+                        @*<div class="form-group">
+            <div class="col-md-7 col-sm-6"></div>
+            <div class="col-md-3 col-sm-4 value-cuota-fin">
+                <label>Total Descuento:</label>
+            </div>
+            <div class="col-md-2 col-sm-2 value-cuota-fin"><label id="txtTotalDescuento">$</label></div>
+        </div>*@
+                        <div class="form-group">
+                            <div class="col-md-7 col-sm-6"></div>
+                            <div class="col-md-3 col-sm-4 value-cuota-fin">
+                                <label>Prima total anual:</label>
+                            </div>
+                            <div class="col-md-2 col-sm-2 value-cuota-fin"><label id="txtTotalPrimaFin">$</label></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-7 col-sm-6"></div>
+                            <div class="col-md-3 col-sm-4 ">
+                                <label>RPN:</label>
+                            </div>
+                            <div class="col-md-2 col-sm-2 "><label id="txtRPN">$</label></div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-7 col-sm-6"></div>
+                            <div class="col-md-3 col-sm-4 value-cuota-fin">
+                                <label>Prima Neta Total:</label>
+                            </div>
+                            <div class="col-md-2 col-sm-2 value-cuota-fin"><label id="txtPrimaNetaTotal">$</label></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-7 col-sm-7"></div>
+                            <div class="col-md-3 col-sm-3"><label id="lblCouta">:</label></div>
+                            <div class="col-md-2 col-sm-2"><label id="txtPrimaCouta"></label></div>
+                        </div>
+                    </div>
+                    <hr />
+                   
+                </div>
+                <div class="panel-footer">
+                    <button id="btnImprimir" class="btn btn-danger" style="width: 30%">@Resources.cotizadorGM.btnImprimir</button>
+                    <button id="btnNuevo" type="submit" class="btn btn-info" style="width: 30%">@Resources.cotizadorGM.Nuevo</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    
+
+
+    
+
+}
+@section Scripts
+{
+    <script src="@Url.Content("~/Scripts/CotizadorGM/fnCotizacionGM.js?3.0")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var objCotizadorGM = new cotizadorGM();
+            objCotizadorGM.setUrlCatalogo('@Url.Action("GetCatalogo", "Generales", new { area = "Generales" })');
+            objCotizadorGM.setUrlDatosDeduCoaseguro('@Url.Action("ObtenerInfoDeduCoaseguro", "CotizadorGM", new { area = "CotizadorGM" })');
+             objCotizadorGM.setUrlGenerarCotizacion('@Url.Action("GenerarCotizacionGM", "CotizadorGM", new { area = "CotizadorGM" })');
+            objCotizadorGM.setUrlImprimirReporteOfertaInd('@Url.Action("ImprimirOfertaGM", "ManejoReportes")');
+            objCotizadorGM.init();
+        });
+    </script>
+}
+

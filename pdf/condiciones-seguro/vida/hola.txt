@@ -1,0 +1,8 @@
+C:\inetpub\wwwroot\seguros_fedecredito\pdf\condiciones-seguro\vida\hola.txt
+C:\inetpub\wwwroot\seguros_fedecredito\pdf\condiciones-seguro\vida\SEGURO DE ACCIDENTES PERSONALES COLECTIVO.pdf
+C:\inetpub\wwwroot\seguros_fedecredito\pdf\condiciones-seguro\vida\SEGURO DE GASTOS MEDICOS COLECTIVO.pdf
+C:\inetpub\wwwroot\seguros_fedecredito\pdf\condiciones-seguro\vida\SEGURO DE VIDA COLECTIVO DE DEUDA DECRECIENTE.pdf
+C:\inetpub\wwwroot\seguros_fedecredito\pdf\condiciones-seguro\vida\SEGURO DE VIDA COLECTIVO.pdf
+C:\inetpub\wwwroot\seguros_fedecredito\pdf\condiciones-seguro\vida\SEGURO DE VIDA INDIVIDUAL.pdf
+C:\inetpub\wwwroot\seguros_fedecredito\pdf\condiciones-seguro\vida\SEGURO DE VIDA REMESA GARANTIZADA.pdf
+C:\inetpub\wwwroot\seguros_fedecredito\pdf\condiciones-seguro\vida\SEGURO INDIVIDUAL DE GASTOS MEDICOS.pdf

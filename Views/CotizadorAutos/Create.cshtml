@@ -1,0 +1,415 @@
+﻿@model SF.Cotizador.Comunes.CotizacionAutos
+
+@{
+    ViewBag.Title = "Cotizacion autos";
+}
+
+@*<h2>@Resources.cotizacionAutos.Titulo1</h2>*@
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-md-10"></div>
+        <div class="col-md-2" style="text-align:right">
+            @Html.ActionLink("Español", "Create", "CotizadorAutos", new { area = "", lang = "es" }, null)
+            |
+            @Html.ActionLink("English", "Create", "CotizadorAutos", new { area = "", lang = "en" }, null)
+        </div>
+    </div>
+    <div class="form-horizontal ">
+        <h4>@Resources.cotizacionAutos.Titulo2</h4>
+        <hr />
+        <div style="text-align:right"><span style="color:red"> * </span><span style="font-size:12px">@Resources.cotizacionAutos.CampoObligario</span> </div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-success">
+                <div class="panel-heading" role="tab" id="panelHeadingDatos">
+                    <h3 class="panel-title">
+                        <a role="button" id="btnPanelDatos" data-toggle="collapse" href="#panelDatos" aria-expanded="true" aria-controls="panelDatos">
+                            <label>@Resources.cotizacionAutos.PanelDatosGen</label>
+                        </a>
+                    </h3>
+                </div>
+                <div id="panelDatos" class="panel-collapse collapse in" data-parent="#accordion" role="tabpanel" aria-labelledby="panelHeadingDatos">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-md-3 col-sm-3"><label for="txtNombreAsegurado">@Resources.cotizacionAutos.Nombres:</label><span style="color:red">  *</span> </div>
+                            <div class="col-md-3 col-sm-3">
+                                <input type="text" class="form-control" id="txtNombreAsegurado">
+                            </div>
+                            <div class="col-md-3 col-sm-3"><label for="txtApellido1Aseg">@Resources.cotizacionAutos.Apellido1:</label><span style="color:red">  *</span> </div>
+                            <div class="col-md-3 col-sm-3">
+                                <input type="text" class="form-control" id="txtApellido1Aseg">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3 col-sm-3"><label for="txtApellido2Aseg">@Resources.cotizacionAutos.Apellido2:</label> </div>
+                            <div class="col-md-3 col-sm-3">
+                                <input type="text" class="form-control" id="txtApellido2Aseg">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3 col-sm-3"><label for="txtDui">@Resources.cotizacionAutos.Dui:</label><span style="color:red">  *</span></div>
+                            <div class="col-md-3 col-sm-3"><input type="text" id="txtDui" class="form-control" data-inputmask="dui"></div>
+                            <div class="col-md-3 col-sm-3 "><label for="txtTelefono">@Resources.cotizacionAutos.Telefono:</label><span style="color:red">  *</span></div>
+                            <div class="col-md-3 col-sm-3 "><input type="text" id="txtTelefono" class="form-control" data-inputmask="phone" placeholder="1234-1234"></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3 col-sm-3"><label for="txtAddress">@Resources.cotizacionAutos.Direccion:</label></div>
+                            <div class="col-md-9 col-sm-9"><input type="text" id="txtAddress" class="form-control"></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3 col-sm-3"><label for="txtAgente">@Resources.cotizacionAutos.Agente:</label></div>
+                            <div class="col-md-9 col-sm-9"><input type="text" id="txtAgente" class="form-control"></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3  col-sm-3">
+                                <label for="txtEmail">@Resources.cotizacionAutos.Correo:<span style="color:red">  *</span></label>
+                            </div>
+                            <div class="col-md-9  col-sm-9">
+                                <input type="text" class="form-control fieldEmail" id="txtEmail" placeholder="email@dominio.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10 col-sm-6">
+                            </div>
+                            <div class="col-md-2 col-sm-6">
+                                <button id="btnContinuar1" data-collapse-from="panelDatos" data-collapse-open="panelBienes" class="btn btn-success btn-continue" style="width: 100%">@Resources.cotizacionAutos.Continuar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-success">
+                <div class="panel-heading" role="tab" id="panelHeadingBienes">
+                    <h3 class="panel-title">
+                        <a role="button" id="btnPanelBienes" class="btn-panel btn-panel-bloqueo" data-toggle="collapse" href="#panelBienes" aria-expanded="true" aria-controls="panelBienes">
+                            <label> @Resources.cotizacionAutos.PanelBienesCubiertos</label>
+                        </a>
+                    </h3>
+                </div>
+                <div id="panelBienes" class="panel-collapse collapse" data-parent="#accordion" role="tabpanel" aria-labelledby="panelHeadingBienes">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-md-3 col-sm-2 "><label for="ddlMarca">@Resources.cotizacionAutos.Marca:</label><span style="color:red">  *</span></div>
+                            <div class="col-md-3 col-sm-4 ">
+                                <select id="ddlMarca" class="selectpicker" data-live-search="true">
+                                    <option value="0">@Resources.cotizacionAutos.SeleccionarUno</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 col-sm-2"><label for="ddlModelo">@Resources.cotizacionAutos.Modelo:</label><span style="color:red">  *</span></div>
+                            <div class="col-md-3 col-sm-4">
+                                <select id="ddlModelo" class="selectpicker" data-live-search="true" disabled>
+                                    <option value="0">@Resources.cotizacionAutos.SeleccionarUno</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3 col-sm-2"><label for="ddlAnio">@Resources.cotizacionAutos.Anio:</label><span style="color:red">  *</span> </div>
+                            <div class="col-md-3 col-sm-4">
+                                <select id="ddlAnio" class="selectpicker" data-live-search="true">
+                                    <option value="0">@Resources.cotizacionAutos.SeleccionarUno</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 col-sm-2"><label for="ddlOrigen">@Resources.cotizacionAutos.Origen:</label><span style="color:red">  *</span></div>
+                            <div class="col-md-3 col-sm-4">
+                                <select id="ddlOrigen" class="selectpicker">
+                                    <option value="0">@Resources.cotizacionAutos.SeleccionarUno</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3 col-sm-2"><label for="txtUso">@Resources.cotizacionAutos.Uso:</label> </div>
+                            <div class="col-md-3 col-sm-4"><input type="text" id="txtUso" placeholder="Uso" class="form-control" value="@Resources.cotizacionAutos.ValorUsoPorDefecto" disabled></div>
+                            <div class="col-md-3 col-sm-3"><label for="rbtPlacaExtranjera">@Resources.cotizacionAutos.PlacasExtranjera:</label></div>
+                            <div class="col-md-3 col-sm-3">
+                                <label class="radio-inline">
+                                    <input type="radio" name="rbtPlacaExtranjera" id="rbtPlacaExtranjeraP" value="option1">@Resources.cotizacionAutos.Si
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="rbtPlacaExtranjera" id="rbtPlacaExtranjeraN" value="option2" checked> @Resources.cotizacionAutos.No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3 col-sm-2"><label for="txtClase">@Resources.cotizacionAutos.Clase:</label></div>
+                            <div class="col-md-3 col-sm-4"><input type="text" id="txtClase" placeholder="Clase" class="form-control" disabled></div>
+                            <div class="col-md-3 col-sm-2"><label for="txtPlaca">@Resources.cotizacionAutos.Placa:</label></div>
+                            <div class="col-md-3 col-sm-4"><input type="text" id="txtPlaca" placeholder="Placa" class="form-control"></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3 col-sm-2"><label for="txtAsegurable">@Resources.cotizacionAutos.Asegurable:</label></div>
+                            <div class="col-md-3 col-sm-4"><input type="text" id="txtAsegurable" placeholder="Asegurable" class="form-control" disabled></div>
+                            <div class="col-md-3 col-sm-2"><label for="txtNumChasis">@Resources.cotizacionAutos.NroChasis:</label></div>
+                            <div class="col-md-3 col-sm-4"><input type="text" id="txtNumChasis" placeholder="No Chasis" class="form-control"></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3 col-sm-2"><label for="txtGPS">@Resources.cotizacionAutos.DispositivoGPS:</label></div>
+                            <div class="col-md-3 col-sm-4"><input type="text" id="txtGPS" placeholder="Dispositivo GPS" class="form-control" disabled></div>
+                            <div class="col-md-3 col-sm-2"><label for="txtNumMotor">@Resources.cotizacionAutos.NroMotor:</label></div>
+                            <div class="col-md-3 col-sm-4"><input type="text" id="txtNumMotor" placeholder="No Motor" class="form-control"></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3 col-sm-2"><label for="txtTipoVeh">@Resources.cotizacionAutos.Tipo:</label></div>
+                            <div class="col-md-3 col-sm-4"><input type="text" id="txtTipoVeh" placeholder="Tipo" class="form-control" disabled></div>
+                            @*<div class="col-md-3 col-sm-2"><label for="ddlEmpleadoDe">@Resources.cotizacionAutos.EmpleadoDe:<span style="color:red">  *</span></label></div>
+                                <div class="col-md-3 col-sm-4">
+                                    <select id="ddlEmpleadoDe" class="selectpicker">
+                                        <option value="0">@Resources.cotizacionAutos.SeleccionarUno</option>
+                                    </select>
+                                </div>*@
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-10 col-sm-6  alert alert-info p-1 m-1">@Resources.cotizacionAutos.Nota1</div>
+                            <div class="col-md-2 col-sm-6">
+                                <button id="btnContinuar2" data-collapse-from="panelBienes" data-collapse-open="panelCoberturas" class="btn btn-success  btn-continue" style="width: 100%">@Resources.cotizacionAutos.Continuar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-success">
+                <div class="panel-heading" role="tab" id="panelHeadingCoberturas">
+                    <h3 class="panel-title">
+                        <a role="button" id="btnPanelCoberturas" class="btn-panel btn-panel-bloqueo" data-toggle="collapse" href="#panelCoberturas" aria-expanded="true" aria-controls="panelCoberturas">
+                            <label> @Resources.cotizacionAutos.panelCoberturas</label>
+                        </a>
+                    </h3>
+                </div>
+                <div id="panelCoberturas" class="panel-collapse collapse" data-parent="#accordion" role="tabpanel" aria-labelledby="panelHeadingCoberturas">
+                    <div class="panel-body">
+                        <div class="form-group prod1">
+                            <div class="col-md-9 col-sm-9"><label for="txtDanioVeh">@Resources.cotizacionAutos.Cobertura1:</label><span style="color:red">  *</span> </div>
+                            <div class="col-md-3 col-sm-3"><input type="text" id="txtDanioVeh" class="form-control numeric-currency var_calculo_prim"></div>
+                        </div>
+                        <div class="form-group prod1">
+                            <div class="col-md-9 col-sm-9 ">&nbsp;&nbsp;@Resources.cotizacionAutos.deduciblePorEvento:</div>
+                            <div class="col-md-3 col-sm-3"><input type="text" id="txtDeducibleEvento" class="form-control" disabled></div>
+                        </div>
+                        <div class="form-group prod2">
+                            <div class="col-md-9 col-sm-9"><label for="ddlCobertura2">@Resources.cotizacionAutos.Cobertura2:</label></div>
+                            <div class="col-md-3 col-sm-3 ">
+                                <select id="ddlCobertura2" class="form-control var_calculo_prim">
+                                    <option value="0">@Resources.cotizacionAutos.SeleccionarUno</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group prod2">
+                            <div class="col-md-12 col-sm-12 "><label>@Resources.cotizacionAutos.Cobertura3:</label></div>
+                        </div>
+
+                        <div class="form-group prod2">
+                            <div class="col-md-9  col-sm-9"><label for="ddlCobertura3" style="font-weight:400">&nbsp;&nbsp;@Resources.cotizacionAutos.VariasPersonas:</label><span style="color:red">  *</span> </div>
+                            <div class="col-md-3 col-sm-3">
+                                <select id="ddlCobertura3" class="form-control var_calculo_prim">
+                                    <option value="0">@Resources.cotizacionAutos.SeleccionarUno</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group prod2">
+                            <div class="col-md-9 col-sm-9"><label for="txtRespUPerson" style="font-weight:400">&nbsp;&nbsp;@Resources.cotizacionAutos.UnaPersona:</label></div>
+                            <div class="col-md-3 col-sm-3"><input type="text" id="txtRespUPerson" class="form-control" disabled></div>
+                        </div>
+                        <div class="form-group prod1">
+                            <div class="col-md-12 col-sm-12 "><label>@Resources.cotizacionAutos.Cobertura4:</label></div>
+                        </div>
+                        <div class="form-group prod1">
+                            <div class="col-md-9  col-sm-9 "><label for="ddlCobertura4" style="font-weight:400">&nbsp;&nbsp;@Resources.cotizacionAutos.VariasPersonas:</label><span style="color:red">  *</span> </div>
+                            <div class="col-md-3  col-sm-3">
+                                <select id="ddlCobertura4" class="form-control var_calculo_prim">
+                                    <option value="0">@Resources.cotizacionAutos.SeleccionarUno</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group prod1">
+                            <div class="col-md-9  col-sm-9 "><label for="txtGMUPerson" style="font-weight:400">&nbsp;&nbsp;@Resources.cotizacionAutos.UnaPersona:</label></div>
+                            <div class="col-md-3 col-sm-3"><input type="text" id="txtGMUPerson" class="form-control numeric-currency " disabled></div>
+                        </div>
+
+                        <div class="form-group prod1">
+                            <div class="col-md-9 col-sm-6 ">
+                            </div>
+                            <div class="col-md-3 col-sm-6 ">
+                                <button class="btn btn-info" type="button" style="width: 100%" id="btnAbrirCoberturas" data-toggle="modal" data-target="#windowCoberturasAdicionales">
+                                    <span class="glyphicon glyphicon-pencil pull-left"></span>     @Resources.cotizacionAutos.CoberturaAdic
+                                </button>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            @*<div class="col-md-2"><label>@Resources.cotizacionAutos.Contado:</label></div>
+            <div class="col-md-2"><input type="text" id="txtContado" class="form-control" disabled></div>*@
+                            <div class="col-md-3 col-sm-3"><label for="ddlNumCuotas">@Resources.cotizacionAutos.NumCoutas:</label><span style="color:red">  *</span> </div>
+                            <div class="col-md-3 col-sm-3">
+                                <select id="ddlNumCuotas" class="selectpicker  form-control" data-live-search="true">
+                                    <option value="0">@Resources.cotizacionAutos.SeleccionarUno</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 col-sm-3"><label>@Resources.cotizacionAutos.PagoFraccionado:</label></div>
+                            <div class="col-md-3 col-sm-3"><input type="text" id="txtPagoFracc" class="form-control" disabled></div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <div class="col-md-10 col-sm-6 ">
+                                <div id="divMessagePossibleDP" class="bg-info"></div>
+                            </div>
+                            <div class="col-md-2 col-sm-6 ">
+                                <button id="btnContinuar3" data-collapse-from="panelCoberturas" data-collapse-open="panelPago" class="btn btn-success  btn-continue" style="width: 100%">@Resources.cotizacionAutos.Calcular</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-success">
+                <div class="panel-heading" role="tab" id="panelHeadingPago">
+                    <h3 class="panel-title">
+                        <a role="button" id="btnPanelPagos" class="btn-panel" data-toggle="collapse" href="#panelPago" aria-expanded="true" aria-controls="panelPago">
+                            <label> @Resources.cotizacionAutos.panelFormaPago</label>
+                        </a>
+                    </h3>
+                </div>
+                <div id="panelPago" class="panel-collapse collapse" data-parent="#accordion" role="tabpanel" aria-labelledby="panelHeadingPago">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-md-7 col-sm-6"></div>
+                            <div class="col-md-3 col-sm-4">
+                                <label id="txtNumPrimasIni">0</label>&nbsp;
+                                <label>@Resources.cotizacionAutos.PrimasMensualesDe:</label>
+                            </div>
+                            <div class="col-md-2 col-sm-2"><label id="txtTotalPrimaIni">$</label></div>
+
+
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-7 col-sm-6"></div>
+                            <div class="col-md-3 col-sm-4 value-cuota-fin">
+                                <label id="txtNumPrimasFin">0</label>&nbsp;
+                                <label>@Resources.cotizacionAutos.PrimaFinal:</label>
+                            </div>
+                            <div class="col-md-2 col-sm-2 value-cuota-fin"><label id="txtTotalPrimaFin">$</label></div>
+                        </div>
+                        <hr />
+                        @*<div class="form-group">
+            <div class="col-md-9">@Resources.cotizacionAutos.SubTotalPrima:</div>
+            <div class="col-md-3"><label id="txtSubTotalPA"></label></div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-9">@Resources.cotizacionAutos.DescuentoPorBuenaExp:</div>
+            <div class="col-md-3"><label id="txtDesBuenExp"></label></div>
+        </div>*@
+                        <div class="form-group">
+                            <div class="col-md-7 col-sm-7"></div>
+                            <div class="col-md-3 col-sm-3">@Resources.cotizacionAutos.PrimaNeta:</div>
+                            <div class="col-md-2 col-sm-2"><label id="txtPrimaNeta"></label></div>
+                        </div>
+                        <div class="form-group prod1">
+                            <div class="col-md-7 col-sm-7"></div>
+                            <div class="col-md-3 col-sm-3">@Resources.cotizacionAutos.CoberturaAdicional:</div>
+                            <div class="col-md-2 col-sm-2"><label id="txtCobertAdic"></label></div>
+                        </div>
+                        <div class="form-group prod1">
+                            <div class="col-md-7 col-sm-7"></div>
+                            <div class="col-md-3 col-sm-3">@Resources.cotizacionAutos.Gps:</div>
+                            <div class="col-md-2 col-sm-2"><label id="txtMontoGPS"></label></div>
+                        </div>
+                        <div class="form-group prod1">
+                            <div class="col-md-7 col-sm-7"></div>
+                            <div class="col-md-3 col-sm-3">@Resources.cotizacionAutos.AsistenciaVial:</div>
+                            <div class="col-md-2 col-sm-2"><label id="txtMontoAsistenciaVial"></label></div>
+                        </div>
+                        <div class="form-group prod1">
+                            <div class="col-md-7 col-sm-7"></div>
+                            <div class="col-md-3 col-sm-3">@Resources.cotizacionAutos.AsistenciaExequial:</div>
+                            <div class="col-md-2 col-sm-2"><label id="txtMontoAsistenciaExequial"></label></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-7 col-sm-7"></div>
+                            <div class="col-md-3 col-sm-3">@Resources.cotizacionAutos.ImpuestoIva:</div>
+                            <div class="col-md-2 col-sm-2"><label id="txtImpuestoIVA"></label></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-7 col-sm-7"></div>
+                            <div class="col-md-3 col-sm-3"><label>@Resources.cotizacionAutos.PrimaTotalAnual:</label></div>
+                            <div class="col-md-2 col-sm-2"><label id="txtPrimaTotalA"></label></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-2 col-sm-3  col-xs-4"><button id="btnDescargarPDF" class="btn btn-warning" style="width: 100%">Instructivo Inspección</button></div>
+                        <div class="col-md-2 col-sm-3  col-xs-4"><button id="btnImprimir" class="btn btn-success" style="width: 100%">@Resources.cotizacionAutos.btnImprimir</button></div>
+                        <div class="col-md-2 col-sm-3 col-xs-4"><button id="btnImprimirCartaOferta" class="btn btn-danger" type="button" style="width: 100%">@Resources.cotizacionAutos.CartaOferta</button></div>
+                        @*<div class="col-md-2 col-sm-3 col-xs-4"><button id="btnImprimirCoberturas" class="btn btn-warning" type="button" style="width: 100%" >Imprimir Coberturas</button></div>*@
+                        <div class="col-md-2 col-sm-3 col-xs-4"><button id="btnNuevo" type="submit" class="btn btn-info" style="width: 100%">@Resources.cotizacionAutos.Nuevo</button></div>
+                        @*<div class="col-md-2"><button id="btnCancelar" class="btn btn-danger" style="width: 100%">@Resources.cotizacionAutos.btnCancelar</button></div>*@
+
+                    </div>
+                    </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="windowCartaOferta" tabindex="-1" role="dialog" aria-labelledby="windowCartaOfertaLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="windowCartaOfertaLabel">Titulo</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="col-md-3"><label for="ddlTitulo">Titulo:</label><span style="color:red">  *</span> </div>
+                        <div class="col-md-9">
+                            <select id="ddlTitulo" class="selectpicker  form-control" data-live-search="true">
+                                <option value="0">@Resources.cotizacionAutos.SeleccionarUno</option>
+                            </select>
+                        </div>
+                        <br />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnGenerarRptCartaOferta" class="btn btn-primary">@Resources.cotizacionAutos.Aceptar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">@Resources.cotizacionAutos.btnCancelar</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="windowCoberturasAdicionales" tabindex="-1" role="dialog" aria-labelledby="windowCoberturasAdicionalesLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="windowCoberturasAdicionalesLabel">@Resources.cotizacionAutos.CoberturaAdic</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="contenedorCoberturas" style="width:100%; height:100%"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">@Resources.cotizacionAutos.Aceptar</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+@section Scripts
+{
+    <script src="@Url.Content("~/Scripts/mailgun_validator.js?6.0")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/CotizadorAutos/fnCotizacionAutos.js?6.0")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var objCotizadorAutos = new cotizadorAutos();
+            objCotizadorAutos.setLabelFormaPago('@Resources.cotizacionAutos.Fraccionado', '@Resources.cotizacionAutos.Contado')
+            objCotizadorAutos.init();
+        });
+    </script>
+
+}
+

@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Cotizador</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="container">
+        @*<nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="http://www.segurosfedecredito.com/">
+
+                        <img src="~/Images/SF.png" />
+                    </a>
+                </div>
+                <div id="navbar1" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Daños <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>@Html.ActionLink("Autos", "Create", "CotizadorAutos", new { area = "", lang = "es" }, null)</li>
+                                <li><a href="#">Incendios</a></li>
+                                <li><a href="#">Hogar</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Vida <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Vida Individual</a></li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+            <!--/.container-fluid -->
+        </nav>*@
+    </div>
+    <div id="tooltip">
+        <div class="content"></div>
+        <div class="icon"></div>
+    </div>
+    <div class="container body-content">
+        @Html.Partial("_Notifications")
+        
+        @RenderBody()
+        <hr />
+        <footer>
+            <input type="hidden" id="sessionState" value="true"/>
+            <div id="footer">
+
+            </div>
+        </footer>
+    </div>
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jsvarios")
+
+    
+
+    <script type="text/javascript">
+        $(function () {
+            window.appUrl = '@System.Web.HttpContext.Current.Request.ApplicationPath';
+            window.appUrl = window.appUrl == '/' ? '' : window.appUrl;
+        });
+    </script>
+
+    @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+        $(function () {
+
+            fnAjaxGlobalHandler();
+        });
+
+        function validarSesion() {
+            return $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                contentType: "application/json; charset=utf-8",
+                url: '@Url.Action("checkSession", "Generales", new { area = "Generales" })',
+                data: '{}',
+                success: function (data) {
+                    $("#sessionState").val("'"+ data + "'");
+                    if (data == false) {
+                        mostrarNotificacion("Error", "Sesión a terminado, favor recargue la página para continuar", "danger");
+                    }
+                }
+            });
+        }
+
+    </script>
+
+</body>
+</html>

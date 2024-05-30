@@ -1,0 +1,261 @@
+﻿
+@{
+    ViewBag.Title = "CotizadorVivienda";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-md-10"></div>
+        <div class="col-md-2" style="text-align:right">
+            @Html.ActionLink("Español", "Create", "CotizadorVivienda", new { area = "", lang = "es" }, null)
+            |
+            @Html.ActionLink("English", "Create", "CotizadorVivienda", new { area = "", lang = "en" }, null)
+        </div>
+    </div>
+    <div class="form-horizontal ">
+        <h4>@Resources.cotizadorVivienda.Titulo</h4>
+        <hr />
+        <div style="text-align:right"><span style="color:red"> * </span><span style="font-size:12px">@Resources.cotizadorVivienda.CampoObligario</span> </div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-success">
+                <div class="panel-heading" role="tab" id="panelHeadingDatos">
+                    <h3 class="panel-title">
+                        <a role="button" id="btnPanelDatos" data-toggle="collapse" href="#panelDatos" aria-expanded="true" aria-controls="panelDatos">
+                            <label>@Resources.cotizadorVivienda.PanelDatosGen</label>
+                        </a>
+                    </h3>
+                </div>
+                <div id="panelDatos" class="panel-collapse collapse in" data-parent="#accordion" role="tabpanel" aria-labelledby="panelHeadingDatos">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-md-3 col-sm-3"><label for="txtNombreAsegurado">@Resources.cotizadorVivienda.Nombres:</label><span style="color:red">  *</span> </div>
+                            <div class="col-md-3 col-sm-3">
+                                <input type="text" class="form-control" id="txtNombreAsegurado">
+                            </div>
+                            <div class="col-md-3 col-sm-3"><label for="txtApellido1Aseg">@Resources.cotizadorVivienda.Apellido1:</label><span style="color:red">  *</span> </div>
+                            <div class="col-md-3 col-sm-3">
+                                <input type="text" class="form-control" id="txtApellido1Aseg">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3 col-sm-3"><label for="txtApellido2Aseg">@Resources.cotizadorVivienda.Apellido2:</label></div>
+                            <div class="col-md-3 col-sm-3">
+                                <input type="text" class="form-control" id="txtApellido2Aseg">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3 col-sm-3"><label for="txtDui">@Resources.cotizadorVivienda.Dui:</label><span style="color:red">  *</span></div>
+                            <div class="col-md-3 col-sm-3 "><input type="text" id="txtDui" class="form-control" data-inputmask="dui"></div>
+                            <div class="col-md-3 col-sm-3 "><label for="txtTelefono">@Resources.cotizadorVivienda.Telefono:</label><span style="color:red">  *</span></div>
+                            <div class="col-md-3 col-sm-3 "><input type="text" id="txtTelefono" class="form-control" data-inputmask="phone" placeholder="1234-1234"></div>
+                        </div>
+                        @*<div class="form-group">
+                                <div class="col-md-3"><label for="txtAddress">@Resources.cotizadorVivienda.Direccion:</label></div>
+                                <div class="col-md-9"><input type="text" id="txtAddress" class="form-control"></div>
+                            </div>*@
+                        <div class="form-group">
+                            <div class="col-md-3 col-sm-3 "><label for="txtAgente">@Resources.cotizadorVivienda.Agente:</label></div>
+                            <div class="col-md-9 col-sm-9 "><input type="text" id="txtAgente" class="form-control"></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3 col-sm-3">
+                                <label for="txtEmail">@Resources.cotizadorVivienda.Correo:<span style="color:red">  *</span></label>
+                            </div>
+                            <div class="col-md-9 col-sm-9">
+                                <input type="text" class="form-control" id="txtEmail" placeholder="email@dominio.com">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-10 col-sm-6 ">
+                            </div>
+                            <div class="col-md-2 col-sm-6">
+                                <button id="btnContinuar1" data-collapse-from="panelDatos" data-collapse-open="panelBienes" class="btn btn-success  btn-continue" style="width: 100%">@Resources.cotizacionAutos.Continuar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-success">
+                <div class="panel-heading" role="tab" id="panelHeadingBienes">
+                    <h3 class="panel-title">
+                        <a role="button" id="btnPanelBienes" class="btn-panel btn-panel-bloqueo" data-toggle="collapse" href="#panelBienes" aria-expanded="true" aria-controls="panelBienes">
+                            <label> @Resources.cotizadorVivienda.PanelBienes</label>
+                        </a>
+                    </h3>
+                </div>
+                <div id="panelBienes" class="panel-collapse collapse" data-parent="#accordion" role="tabpanel" aria-labelledby="panelHeadingBienes">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-md-3 col-sm-3"><label for="ddlUsoVivienda">@Resources.cotizadorVivienda.UsoVivienda:</label><span style="color:red">  *</span></div>
+                            <div class="col-md-9 col-sm-9">
+                                <select id="ddlUsoVivienda" class="selectpicker" data-live-search="true">
+                                    <option value="0">@Resources.cotizadorVivienda.SeleccionarUno</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3 col-sm-3"><label for="txtUbicacionRiesgo">@Resources.cotizadorVivienda.Ubicacion:</label><span style="color:red">  *</span></div>
+                            <div class="col-md-9 col-sm-9"><input type="text" id="txtUbicacionRiesgo" class="form-control var_calculo_prim"></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3 col-sm-4">
+                                <label for="txtMontoConstruccion"> @Resources.cotizadorVivienda.Construccion</label>
+                                <span style="color:red">  *  </span>
+                                <img class="tooltip-question" title="@Resources.cotizadorVivienda.DescripcionConstruccion" src="~/Images/question.png" />
+
+                            </div>
+                            <div class="col-md-3 col-sm-2">
+                                <input type="text" id="txtMontoConstruccion" class="form-control numeric-currency var_calculo_prim">
+                            </div>
+                            <div class="col-md-3 col-sm-4">
+                                <label for="txtMontoContenido">@Resources.cotizadorVivienda.Contenido:</label>
+                                <span style="color:red">  *  </span>
+                                <img class="tooltip-question" title="@Resources.cotizadorVivienda.DescripcionContenido" src="~/Images/question.png" />
+
+                            </div>
+                            <div class="col-md-3 col-sm-2">
+                                <input type="text" id="txtMontoContenido" class="form-control numeric-currency ">
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <div class="col-md-3 col-sm-3"><label for="ddlNumCuotas">@Resources.cotizacionAutos.NumCoutas:</label><span style="color:red">  *</span> </div>
+                            <div class="col-md-3 col-sm-3">
+                                <div class="form-group">
+                                    <select id="ddlNumCuotas" class="selectpicker form-control" data-live-search="true">
+                                        <option value="0">@Resources.cotizadorVivienda.SeleccionarUno</option>
+                                    </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3"><label>@Resources.cotizacionAutos.PagoFraccionado:</label></div>
+                                <div class="col-md-3 col-sm-3"><input type="text" id="txtPagoFracc" class="form-control" disabled></div>
+                            </div>
+                        <hr />
+                        <div class="form-group">
+                            <div class="col-md-10 col-sm-9 col-xs-8"></div>
+                            <div class="col-md-2 col-sm-3 col-xs-4"><button id="btnCalcular"  data-collapse-from="panelBienes"  data-collapse-open="panelPago" class="btn btn-success  btn-continue" style="width: 100%; ">@Resources.cotizadorVivienda.Calcular</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-success">
+                <div class="panel-heading" role="tab" id="panelHeadingPago">
+                    <h3 class="panel-title">
+                        <a role="button" id="btnPanelPagos" class="btn-panel" data-toggle="collapse" href="#panelPago" aria-expanded="true" aria-controls="panelPago">
+                            <label> @Resources.cotizacionAutos.panelFormaPago</label>
+                        </a>
+                    </h3>
+                </div>
+                <div id="panelPago" class="panel-collapse collapse" data-parent="#accordion" role="tabpanel" aria-labelledby="panelHeadingPago">
+                    <div class="panel-body">
+
+                        <hr />
+                        <div class="form-group">
+                            <div class="col-md-7 col-sm-7"></div>
+                            <div class="col-md-3 col-sm-3">@Resources.cotizadorVivienda.SumaAsegurada:</div>
+                            <div class="col-md-2 col-sm-2"><label id="txtSumaAsegurada"></label></div>
+                        </div>
+                    
+                        <div class="form-group">
+                            <div class="col-md-7 col-sm-7"></div>
+                            <div class="col-md-3 col-sm-3">@Resources.cotizadorVivienda.PrimaNeta:</div>
+                            <div class="col-md-2 col-sm-2"><label id="txtPrimaNeta"></label></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-7 col-sm-7"></div>
+                            <div class="col-md-3 col-sm-3">@Resources.cotizadorVivienda.IVA:</div>
+                            <div class="col-md-2 col-sm-2"><label id="txtImpuestoIVA"></label></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-7 col-sm-7"></div>
+                            <div class="col-md-3 col-sm-3"><label>@Resources.cotizadorVivienda.TotalPagar:</label></div>
+                            <div class="col-md-2 col-sm-2"><label id="txtPrimaTotalA"></label></div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <div class="col-md-7 col-sm-6"></div>
+                            <div class="col-md-3 col-sm-4">
+                                <label id="txtNumPrimasIni">0</label>&nbsp;
+                                <label>@Resources.cotizacionAutos.PrimasMensualesDe:</label>
+                            </div>
+                            <div class="col-md-2 col-sm-2"><label id="txtTotalPrimaIni">$</label></div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-7 col-sm-6"></div>
+                            <div class="col-md-3 col-sm-4 value-cuota-fin">
+                                <label id="txtNumPrimasFin">0</label>&nbsp;
+                                <label>@Resources.cotizacionAutos.PrimaFinal:</label>
+                            </div>
+                            <div class="col-md-2 col-sm-2 value-cuota-fin"><label id="txtTotalPrimaFin">$</label></div>
+                        </div>
+                        <hr />
+
+
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-3"></div>
+                            <div class="col-md-2 col-sm-3  col-xs-4"><button id="btnImprimir" class="btn btn-success btn-print" style="width: 100%">@Resources.cotizadorVivienda.btnImprimir</button></div>
+                            <div class="col-md-2 col-sm-3 col-xs-4"><button id="btnImprimirCartaOferta" class="btn btn-danger" type="button" style="width: 100%">@Resources.cotizadorVivienda.CartaOferta</button></div>
+                            <div class="col-md-2 col-sm-3 col-xs-4"><button id="btnNuevo" type="submit" class="btn btn-info" style="width: 100%">@Resources.cotizacionAutos.Nuevo</button></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="windowCartaOferta" tabindex="-1" role="dialog" aria-labelledby="windowCartaOfertaLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="windowCartaOfertaLabel">Titulo</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="col-md-3"><label for="ddlTitulo">Titulo:</label><span style="color:red">  *</span> </div>
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <select id="ddlTitulo" class="selectpicker  form-control" data-live-search="true">
+                                    <option value="0">@Resources.cotizacionAutos.SeleccionarUno</option>
+                                </select>
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnGenerarRptCartaOferta" class="btn btn-primary">@Resources.cotizacionAutos.Aceptar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">@Resources.cotizacionAutos.btnCancelar</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+@section Scripts
+{
+    <script src="@Url.Content("~/Scripts/CotizadorVivienda/fnCotizacionVivienda.js?3.0")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var objCotizacionVivienda = new cotizadorVivienda();
+            objCotizacionVivienda.setUrlCatalogo('@Url.Action("GetCatalogo", "Generales", new { area = "Generales" })');
+            objCotizacionVivienda.setUrlGenerarPrimaCotizacion('@Url.Action("GenerarPrimaCotizacion", "CotizadorVivienda", new { area = "CotizadorVivienda" })');
+            objCotizacionVivienda.setUrlCalculoPrimaMensual('@Url.Action("CalcularPrimaMensual", "CotizadorVivienda", new { area = "CotizadorVivienda" })');
+            objCotizacionVivienda.setUrlImprimirCotizacionOferta('@Url.Action("ImprimirOfertaVivienda", "ManejoReportes")');
+            objCotizacionVivienda.setUrlImprimirCartaOferta('@Url.Action("ImprimirCartaOfertaVivienda", "ManejoReportes")');
+            objCotizacionVivienda.setLabelFormaPago('@Resources.cotizacionAutos.Fraccionado', '@Resources.cotizacionAutos.Contado')
+            objCotizacionVivienda.init();
+
+        });
+    </script>
+
+}
+

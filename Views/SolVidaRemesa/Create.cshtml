@@ -1,0 +1,452 @@
+﻿
+@{
+    ViewBag.Title = "Solicitud de Vida ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal ">
+        <h4>@Resources.solicitudVidaRemesas.Titulo</h4>
+        <hr />
+        <div style="text-align:right"><span style="color:red"> * </span><span style="font-size:12px">@Resources.cotizacionAutos.CampoObligario</span> </div>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-success">
+                <div class="panel-heading" role="tab" id="panelHeadingDatos">
+                    <h3 class="panel-title">
+                        <a role="button" id="btnPanelDatos" data-toggle="collapse" href="#panelDatos" aria-expanded="true" aria-controls="panelDatos">
+                            <label>@Resources.solicitudVidaRemesas.PanelDatosGen</label>
+                        </a>
+                    </h3>
+                </div>
+                <div id="panelDatos" class="panel-collapse collapse in" data-parent="#accordion" role="tabpanel" aria-labelledby="panelHeadingDatos">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-md-2 col-sm-3"><label for="txtNombreAsegurado">@Resources.solicitudVidaRemesas.Nombres:</label><span style="color:red">  *</span> </div>
+                            <div class="col-md-4 col-sm-3">
+                                <input type="text" class="form-control" id="txtNombreAsegurado">
+                            </div>
+                            <div class="col-md-2 col-sm-3"><label for="txtApellido1Aseg">@Resources.solicitudVidaRemesas.Apellido1:</label><span style="color:red">  *</span> </div>
+                            <div class="col-md-4 col-sm-3">
+                                <input type="text" class="form-control" id="txtApellido1Aseg">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-2 col-sm-3"><label for="txtApellido2Aseg">@Resources.solicitudVidaRemesas.Apellido2:</label> </div>
+                            <div class="col-md-4 col-sm-3">
+                                <input type="text" class="form-control" id="txtApellido2Aseg">
+                            </div>
+                            <div class="col-md-2 col-sm-3"><label for="ddlTipoDoc">@Resources.solicitudVidaRemesas.TipoDoc:</label><span style="color:red">  *</span> </div>
+                            <div class="col-md-4 col-sm-3">
+                                <select id="ddlTipoDoc" class="selectpicker form-control" data-live-search="true">
+                                    <option value="0">@Resources.solicitudVidaRemesas.SeleccionarUno</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-2 col-sm-3"><label for="txtNroDocumento">@Resources.solicitudVidaRemesas.NroDocumento:</label><span style="color:red">  *</span></div>
+                            <div class="col-md-4 col-sm-3 "><input type="text" id="txtNroDocumento" class="form-control" data-inputmask="dui" disabled></div>
+                            <div class="col-md-2 col-sm-3 "><label for="ddlGenero">@Resources.solicitudVidaRemesas.Genero:<span style="color:red">  *</span></label></div>
+                            <div class="col-md-4 col-sm-3">
+                                <select id="ddlGenero" class="selectpicker form-control" data-live-search="true">
+                                    <option value="0">@Resources.solicitudVidaRemesas.SeleccionarUno</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-2 col-sm-3"><label for="txtFechaNac">@Resources.solicitudVidaRemesas.FechaNac:</label><span style="color:red">  *</span></div>
+                            <div class="col-md-4 col-sm-3 "><input type="text" id="txtFechaNac" class="form-control input-datepicker "></div>
+                            <div class="col-md-2 col-sm-3 "><label for="ddlEstadoFam">@Resources.solicitudVidaRemesas.EstadoFam:<span style="color:red">  *</span></label></div>
+                            <div class="col-md-4 col-sm-3 ">
+                                <select id="ddlEstadoFam" class="selectpicker form-control" data-live-search="true">
+                                    <option value="0">@Resources.solicitudVidaRemesas.SeleccionarUno</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-2 col-sm-3"><label for="txtOcupacion">@Resources.solicitudVidaRemesas.Ocupacion:</label><span style="color:red">  *</span></div>
+                            <div class="col-md-4 col-sm-3 ">
+                                <input type="text" id="txtOcupacion" class="form-control">
+                            </div>
+                            <div class="col-md-2 col-sm-3 "><label for="txtTelefono">@Resources.solicitudVidaRemesas.Telefono:<span style="color:red">  *</span></label></div>
+                            <div class="col-md-4 col-sm-3 "><input type="text" id="txtTelefono" class="form-control" ></div>
+                        </div>
+
+                        <label class="subtitulo">@Resources.solicitudVidaRemesas.Direccion</label>
+                        <hr class="subtitulo" />
+                        <div class="form-group">
+                            <div class="col-md-2 col-sm-3"><label for="ddlPais">@Resources.solicitudVidaRemesas.Pais:</label><span style="color:red">  *</span></div>
+                            <div class="col-md-4 col-sm-3 ">
+                                <select id="ddlPais" class="selectpicker form-control" data-live-search="true">
+                                    <option value="0">@Resources.solicitudVidaRemesas.SeleccionarUno</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2 col-sm-3 "><label for="ddlDepto">@Resources.solicitudVidaRemesas.Depto:<span style="color:red">  *</span></label></div>
+                            <div class="col-md-4 col-sm-3 ">
+                                <select id="ddlDepto" class="selectpicker form-control" data-live-search="true" disabled>
+                                    <option value="0">@Resources.solicitudVidaRemesas.SeleccionarUno</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-2 col-sm-3"><label for="ddlCiudad">@Resources.solicitudVidaRemesas.Ciudad:</label></div>
+                            <div class="col-md-4 col-sm-3 ">
+                                <select id="ddlCiudad" class="selectpicker form-control" data-live-search="true" disabled>
+                                    <option value="0">@Resources.solicitudVidaRemesas.SeleccionarUno</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2 col-sm-3"><label for="ddlColonia">@Resources.solicitudVidaRemesas.Colonia:</label></div>
+                            <div class="col-md-4 col-sm-3">
+                                <select id="ddlColonia" class="selectpicker form-control" data-live-search="true" disabled>
+                                    <option value="0">@Resources.solicitudVidaRemesas.SeleccionarUno</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-2 col-sm-3"><label for="txtAddress">@Resources.solicitudVidaRemesas.Direccion:<span style="color:red">  *</span></label></div>
+                            <div class="col-md-6 col-sm-5"><input type="text" id="txtAddress" class="form-control"></div>
+                            <div class="col-md-2 col-sm-2"><label for="txtNumCasa">@Resources.solicitudVidaRemesas.NumCasa:</label></div>
+                            <div class="col-md-2 col-sm-2 ">
+                                <input type="text" id="txtNumCasa" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-2 col-sm-3"><label for="txtCodPostal">@Resources.solicitudVidaRemesas.CodigoPostal:<span style="color:red">  *</span></label></div>
+                            <div class="col-md-4 col-sm-3">
+                                <input type="text" id="txtCodPostal" class="form-control">
+                            </div>
+                        </div>
+
+                        @*<div class="form-group">
+                                <div class="col-md-3">
+                                    <label for="txtEmail">@Resources.solicitudVidaRemesas.Correo:<span style="color:red">  *</span></label>
+                                </div>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="txtEmail" placeholder="email@dominio.com">
+                                </div>
+                            </div>*@
+                        <div class="form-group">
+                            <div class="col-md-10 col-sm-6">
+                            </div>
+                            <div class="col-md-2 col-sm-6">
+                                <button id="btnContinuar1" data-collapse-from="panelDatos" data-collapse-open="panelCoberturas" class="btn btn-success btn-continue" style="width: 100%">@Resources.solicitudVidaRemesas.btnContinuar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-success">
+                <div class="panel-heading" role="tab" id="panelHeadingCoberturas">
+                    <h3 class="panel-title">
+                        <a role="button" id="btnPanelCoberturas" class="btn-panel btn-panel-bloqueo" data-toggle="collapse" href="#panelCoberturas" aria-expanded="true" aria-controls="panelCoberturas">
+                            <label> @Resources.solicitudVidaRemesas.PanelCoberturas</label>
+                        </a>
+                    </h3>
+                </div>
+                <div id="panelCoberturas" class="panel-collapse collapse" data-parent="#accordion" role="tabpanel" aria-labelledby="panelHeadingCoberturas">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <div class="col-md-3 col-sm-3"><label for="ddlPlanes">@Resources.solicitudVidaRemesas.PlanSel:</label><span style="color:red">  *</span></div>
+                            <div class="col-md-3 col-sm-3 ">
+                                <select id="ddlPlanes" class="selectpicker form-control" data-live-search="true">
+                                    <option value="0">@Resources.solicitudVidaRemesas.SeleccionarUno</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 col-sm-3"><label for="ddlFormaPago">@Resources.solicitudVidaRemesas.FormaPago:</label><span style="color:red">  *</span></div>
+                            <div class="col-md-3 col-sm-3"> 
+                                <select id="ddlFormaPago" class="selectpicker form-control" data-live-search="true">
+                                    <option value="0">@Resources.solicitudVidaRemesas.SeleccionarUno</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a role="button" id="btnPanelInfo" class="btn-panel" data-toggle="collapse" href="#panelInformacionPlan" aria-expanded="true" aria-controls="panelInformacionPlan">
+                                        <label>Información del plan</label>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="panelInformacionPlan" class="panel-collapse collapse" role="tabpanel">
+                                <div class="panel-body">
+                                    <table class="table" id="tbl_plan">
+                                        <tr>
+                                            <td style="width: 40%">Suma de remesa garantizada por 12 meses:</td>
+                                            <td style="width: 60%;"><label id="lblSumaAnual"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Contribución de gastos emergentes</td>
+                                            <td><label id="lblGastosEmerg"></label></td>
+                                        </tr>
+                                        <tr id="costo_1">
+                                            <td>Costo Mensual:</td>
+                                            <td><label id="lblCostoMensual"></label></td>
+                                        </tr>
+                                        <tr id="costo_2">
+                                            <td>Costo trimestral</td>
+                                            <td><label id="lblCostoTrimestral"></label></td>
+                                        </tr>
+                                        <tr id="costo_3">
+                                            <td>Costo semestral:</td>
+                                            <td><label id="lblCostoSemestral"></label></td>
+                                        </tr>
+                                        <tr id="costo_4">
+                                            <td>Costo anual: </td>
+                                            <td><label id="lblCostoAnual"></label></td>
+                                        </tr>
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">Beneficiario principal (Asignación 100%)</h4>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <div class="col-md-2 col-sm-3"><label for="txtNombreBenefPpal">@Resources.solicitudVidaRemesas.Nombres:</label><span style="color:red">  *</span> </div>
+                                    <div class="col-md-4 col-sm-3">
+                                        <input type="text" class="form-control" id="txtNombreBenefPpal">
+                                    </div>
+                                    <div class="col-md-2 col-sm-3"><label for="txtApellido1BenefPpal">@Resources.solicitudVidaRemesas.Apellido1:</label><span style="color:red">  *</span> </div>
+                                    <div class="col-md-4 col-sm-3">
+                                        <input type="text" class="form-control" id="txtApellido1BenefPpal">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-2 col-sm-3"><label for="txtApellido2BenefPpal">@Resources.solicitudVidaRemesas.Apellido2:</label><span style="color:red">  *</span> </div>
+                                    <div class="col-md-4 col-sm-3">
+                                        <input type="text" class="form-control" id="txtApellido2BenefPpal">
+                                    </div>
+                                    <div class="col-md-2 col-sm-3"><label for="ddlParentescoBenefPpal">@Resources.solicitudVidaRemesas.Parentesco:</label><span style="color:red">  *</span> </div>
+                                    <div class="col-md-4 col-sm-3">
+                                        <select id="ddlParentescoBenefPpal" class="selectpicker form-control" data-live-search="true">
+                                            <option value="0">@Resources.solicitudVidaRemesas.SeleccionarUno</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">Beneficiario Contingente (en caso que el beneficiario principal fallezca antes del asegurado)</h4>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <div class="col-md-2 col-sm-3"><label for="txtNombreBenefCont">@Resources.solicitudVidaRemesas.Nombres:</label><span style="color:red">  *</span> </div>
+                                    <div class="col-md-4 col-sm-3">
+                                        <input type="text" class="form-control" id="txtNombreBenefCont">
+                                    </div>
+                                    <div class="col-md-2 col-sm-3"><label for="txtApellido1BenefCont">@Resources.solicitudVidaRemesas.Apellido1:</label><span style="color:red">  *</span> </div>
+                                    <div class="col-md-4 col-sm-3">
+                                        <input type="text" class="form-control" id="txtApellido1BenefCont">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-2 col-sm-3"><label for="txtApellido2BenefCont">@Resources.solicitudVidaRemesas.Apellido2:</label><span style="color:red">  *</span> </div>
+                                    <div class="col-md-4 col-sm-3">
+                                        <input type="text" class="form-control" id="txtApellido2BenefCont">
+                                    </div>
+                                    <div class="col-md-2 col-sm-3"><label for="ddlParentescoBenefCont">@Resources.solicitudVidaRemesas.Parentesco:</label><span style="color:red">  *</span> </div>
+                                    <div class="col-md-4 col-sm-3">
+                                        <select id="ddlParentescoBenefCont" class="selectpicker form-control" data-live-search="true">
+                                            <option value="0">@Resources.solicitudVidaRemesas.SeleccionarUno</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">Datos de pago</h4>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <div class="col-md-2 col-sm-3"><label for="ddlTipoPago">@Resources.solicitudVidaRemesas.MedioPago:</label><span style="color:red">  *</span> </div>
+                                    <div class="col-md-4 col-sm-3">
+                                        <select id="ddlTipoPago" class="selectpicker form-control" data-live-search="true">
+                                            <option value="0">@Resources.solicitudVidaRemesas.SeleccionarUno</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6">
+                                        <label for="txtNumCuenta">@Resources.solicitudVidaRemesas.NumCuenta:</label>
+                                        <span style="color:red">Por su seguridad después de imprimir la Solicitud de Seguro, debe colocar a manuscrito el número de cuenta o tarjeta.</span>
+                                        @*<input type="text" class="form-control" id="txtNumCuenta">*@
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-2 col-sm-3"><label for="ddlEntidad">@Resources.solicitudVidaRemesas.Entidad:</label><span style="color:red">  *</span> </div>
+                                    <div class="col-md-10 col-sm-9">
+                                        <select id="ddlEntidad" class="selectpicker form-control" data-live-search="true">
+                                            <option value="0">@Resources.solicitudVidaRemesas.SeleccionarUno</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <label class="subtitulo">Titular de la cuenta o tarjeta</label>
+                                <hr class="subtitulo" />
+                                <div class="form-group">
+                                    <div class="col-md-4 col-sm-4"><label for="chkMismoAsegurado">Pagador es el mismo asegurado:</label></div>
+                                    <div class="col-md-2 col-sm-2">
+                                        <input type="checkbox" class="form-control" style="height:20px;" id="chkMismoAsegurado">
+                                    </div>
+                                    <div class="col-md-2 col-sm-3"><label for="txtNombrePagador">@Resources.solicitudVidaRemesas.Nombres:</label><span style="color:red">  *</span> </div>
+                                    <div class="col-md-4 col-sm-3">
+                                        <input type="text" class="form-control" id="txtNombrePagador">
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-2 col-sm-3"><label for="txtApellido1Pag">@Resources.solicitudVidaRemesas.Apellido1:</label><span style="color:red">  *</span> </div>
+                                    <div class="col-md-4 col-sm-3">
+                                        <input type="text" class="form-control" id="txtApellido1Pag">
+                                    </div>
+                                    <div class="col-md-2 col-sm-3"><label for="txtApellido2Pag">@Resources.solicitudVidaRemesas.Apellido2:</label><span style="color:red">  *</span> </div>
+                                    <div class="col-md-4 col-sm-3">
+                                        <input type="text" class="form-control" id="txtApellido2Pag">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <br />
+                        <hr />
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-3"></div>
+                            <div class="col-md-2 col-sm-3  col-xs-4"><button id="btnGuardar" data-collapse-from="panelCoberturas" class="btn btn-success btn-continue" style="width: 100%">@Resources.solicitudVidaRemesas.Guardar</button></div>
+                            <div class="col-md-2 col-sm-3  col-xs-4"><button id="btnImprimir" class="btn btn-danger" style="width: 100%">@Resources.solicitudVidaRemesas.btnImprimir</button></div>
+                            <div class="col-md-2 col-sm-3 col-xs-4"><button id="btnNuevo" type="submit" class="btn btn-info" style="width: 100%">@Resources.solicitudVidaRemesas.Nuevo</button></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="windowAclaracion" tabindex="-1" role="dialog" aria-labelledby="windowAclaracioLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="windowCartaOfertaLabel">@Resources.solicitudVidaRemesas.tituloAclaracion</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="col-md-12 parrafo">
+                            @Resources.solicitudVidaRemesas.txtAclaracion
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3 col-sm-4"><label for="txtObservaciones">@Resources.solicitudVidaRemesas.Observaciones:</label><span style="color:red"> * </span><br><span style="font-size:12px;">(Especifique si tiene o no enfermedades graves)</span></div>
+                        <div class="col-md-9 col-sm-8">
+                            <textarea id="txtObservaciones" class="form-control" cols="25" rows="3" placeholder="máximo 200 caracteres" maxlength="210" data-inputmask-restrict="alfanumerico"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="modal-footer">
+                    <br />
+                    <button type="button" id="btnGuardarSolicitud" class="btn btn-primary">@Resources.cotizacionAutos.Aceptar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">@Resources.cotizacionAutos.btnCancelar</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="windowAdvertencia" tabindex="-1" role="dialog" aria-labelledby="windowAdvertenciaLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Indicaciones</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label> Indicaciones:</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 parrafo">
+                            Antes de completar los siguientes campos, agradeceremos considerar las siguientes recomendaciones:
+                            <ol>
+                                <li>El Seguro de Vida “Remesa Garantizada” se encuentra regulado por las leyes de El Salvador. </li>
+                                <li>Los beneficiarios que designe deben ser residentes en El Salvador y deben tener un vínculo familiar con el asegurado. </li>
+                                <li>Para el pago de la prima se requiere tener una cuenta con una entidad o banco del SISTEMA FEDECRÉDITO, o tomar la opción de pago anual y realizar el pago a través de una transferencia bancaria. </li>
+                                <li>El seguro será efectivo a partir de la fecha en que la Aseguradora notifique la aprobación de su Solicitud de Seguro. </li>
+
+                           </ol>
+</div>
+                    </div>
+
+                </div>
+                <br />
+                <div class="modal-footer">
+                    <br />
+                    <button type="button" id="btnGuardarSolicitud" class="btn btn-primary" data-dismiss="modal">He leído indicaciones</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="windowAdvertencia2" tabindex="-1" role="dialog" aria-labelledby="windowAdvertencia2Label">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Aviso</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label>Nota Importante:</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 parrafo">
+                            <span>
+                                Después de imprimir la Solicitud de Seguro debe firmar y remitir vía correo a <a href="mailto:contacto@segurosfedecredito.com ">contacto@segurosfedecredito.com</a> con  fotocopia legible de su documento de identidad (DUI, pasaporte o carné de residente), posteriormente debe enviar en físico.
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+                <br />
+                <div class="modal-footer">
+                    <br />
+                    <button type="button" id="btnImprimirReporte2" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+    @section Scripts
+{
+        <script src="@Url.Content("~/Scripts/SolVidaRemesa/fnSolVidaRemesa.js?3.0")" type="text/javascript"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var objSolVidaRemesa = new solVidaRemesa();
+                objSolVidaRemesa.setUrlCatalogo('@Url.Action("GetCatalogo", "Generales", new { area = "Generales" })');
+                objSolVidaRemesa.setUrlDatosPlanRemesa('@Url.Action("ObtenerDatosPlan", "SolVidaRemesa", new { area = "SolVidaRemesa" })');
+                objSolVidaRemesa.setUrlGenerarSolicitud('@Url.Action("GeneraSolicitudRemesa", "SolVidaRemesa", new { area = "SolVidaRemesa" })');
+                objSolVidaRemesa.setUrlImprimirReporteSolicitud('@Url.Action("ImprimirSolicitudVidaRemesa", "ManejoReportes")');
+
+                objSolVidaRemesa.init();
+            });
+        </script>
+
+    }
